@@ -1,0 +1,35 @@
+{% extends 'post_office/base_email.html' %}
+{% block subject %}
+    Unusual activity detected
+{% endblock %}
+
+{% block body %}
+    <div style="padding: 1rem;">
+        <p style="font-weight:bolder;">Hi <strong style="color:#447e9b;">{{ user.username }},</strong></p>
+        <h4>We have detected unusual access to your account</h4>
+        <div style="display: block;text-align: left;">
+            <p>
+                <b>Device:</b> <span>{{ device.machine }}</span> - <span>{{ device.operating_system }}</span>
+            </p>
+
+            <p>
+                <b>Browser: </b><span>{{ device.browser }} </span>
+            </p>
+            <p>
+                <b>Location: </b><span>{{ device.ip }} - near {{ device.location }}</span>
+
+            </p>
+            <p>
+                <b>At: </b>
+                <span>{{ device.created }}</span>
+            </p>
+            <div style="padding:1em;border:dashed 1px #ff8a00;">
+                <h3>IF IT WASN'T YOU PLEASE RESET YOUR PASSWORD IMMEDIATELY</h3>
+                <a style="padding: 0.7rem 1rem;text-decoration: none;color: #FFF;background:#ff8a00; border-radius: 3rem;margin-top: 1rem; display: inline-block;"
+                    href="http://{{ domain }}{% url "auth:password_reset" %}"><strong>Reset Password</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

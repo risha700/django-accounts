@@ -1,0 +1,14 @@
+{% extends 'post_office/base_email.html' %}
+{% block subject %}
+    Please activate your account
+{% endblock %}
+
+{% block body %}
+    <div style="padding: 1rem;">
+        <p style="font-weight:bolder;">Hi <strong style="color:#447e9b;">{{ user.username }},</strong></p>
+        <p>Please click on the link below to confirm your registration</p>
+        <a style="padding: 0.7rem 1rem;text-decoration: none;color: #FFF;background:#ff8a00; border-radius: 3rem;margin-top: 1rem; display: inline-block;"
+           href="http://{{ domain }}{% url "auth:activate" uidb64=uid token=token %}"><strong>Activate</strong></a>
+    </div>
+
+{% endblock %}

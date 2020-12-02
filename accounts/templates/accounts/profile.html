@@ -1,0 +1,44 @@
+{% extends "accounts_base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+
+{% block content %}
+    <div>
+        <section class=" block h-64 relative flex-wrap">
+            <h1 class="leading-10 font-bold mb-6 text-3xl text-white border-0">Dashboard</h1>
+        </section>
+
+
+        <section class="flex justify-center content-center slideInDown animated mb-20 relative h-full">
+            <div class="lg:w-3/4 border border-t-4 border-blue-300 bg-white border p-10 rounded-lg shadow -mt-20  overflow-x-auto">
+
+                    {% if user.is_authenticated %}
+                        {% if user.profile.photo %}
+                            <div class="absolute left-0 right-0">
+                                <img src="{{ user.profile.photo.url }}"
+                                  class="h-32 w-32 block ml-auto mr-auto rounded-full border-double border-orange-300 border-2 -mt-16 object-fit">
+                             </div>
+
+                     {% endif %}
+                    <div class="px-3 pb-6 pt-2 text-center content-center mt-10 pt-5">
+
+                       <p class="mt-2 font-sans text-gray-700"> <strong> Welcome</strong>, {{ user.username }}</p>
+                            <p>You can also
+                                <a class="link" href="{% url "auth:edit" %}">edit your profile</a>
+                                or <a class="link" href="{% url 'auth:password_change' %}">change your password</a>.
+                            </p>
+                        <a class="link" href="{% url 'auth:logout' %}">Logout</a>
+                    </div>
+
+                    {% endif %}
+
+
+            </div>
+
+         </section>
+
+</div>
+
+{% endblock %}
+

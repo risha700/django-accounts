@@ -1,0 +1,14 @@
+{% extends "accounts_base.html" %}
+
+{% block title %}{{ user.get_full_name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ user.get_full_name }}</h1>
+    <div class="profile-info">
+        {% if user.profile.photo %}
+        <img src="{{ user.profile.photo.url }}" style="height: 80px;border-radius: 50%;">
+        {% endif %}
+    </div>
+
+{% endblock %}
+

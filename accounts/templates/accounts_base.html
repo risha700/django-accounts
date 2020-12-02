@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+
+<title>{% block title %}{% endblock %}</title>
+    {% include 'includes/_message.html' %}
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<style>
+    {% block styles %}
+    {% endblock %}
+</style>
+
+<body class="font-mono bg-gray-300 antialiased">
+    <div id="app" class="container mt-10 ">
+        {% block content %}
+        {% endblock %}
+    </div>
+{#<script src="{% static 'js/app.js' %}"></script>#}
+
+</body>
+</html>

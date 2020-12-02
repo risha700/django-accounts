@@ -1,0 +1,15 @@
+{% extends "accounts_base.html" %}
+
+{% block title %}Verify your phone{% endblock %}
+
+{% block content %}
+    <div class="flex mb-6">
+        <h1 class="text-2xl font-semibold mb-2 text-left border-b-4">Please enter the token you've received </h1>
+    </div>
+    <form action="." method="post">
+        {% include "includes/_form.html" %}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline rounded-full mt-3 block mr-auto ml-auto">Verify</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "accounts_base.html" %}
+{% block title %}New device detected{% endblock %}
+
+{% block content %}
+    <h1 class="text-gray-600 ">Check the following unusual activity</h1>
+    <div class="flex flex-col justify-between content-center">
+        <p class="leading-10">
+            <span class="font-semibold capitalize text-indigo-500">Device: </span>
+            <span>{{ device.machine }}</span>
+        </p>
+        <p class="leading-10">
+            <span class="font-semibold capitalize text-indigo-500">Operating system: </span>
+            <span>{{ device.operating_system }}</span>
+        </p>
+        <p class="leading-10">
+            <span class="font-semibold capitalize text-indigo-500">Browser: </span>
+            <span>{{ device.browser }}</span>
+        </p>
+        <p class="leading-10">
+            <span class="font-semibold capitalize text-indigo-500">From IP: </span>
+            <span>{{ device.ip }} - near {{ device.location }}</span>
+        </p>
+        <p class="leading-10">
+            <span class="font-semibold capitalize text-indigo-500">On:</span>
+            <span>{{ device.created }}</span>
+        </p>
+    </div>
+    <form action="{% url 'auth:new_device' %}" method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline border-primary hover:bg-success mt-10 block mr-auto ml-auto">Trust device?</button>
+        <p class="btn link"><a href="{% url 'auth:profile' %}">Continue as a guest</a></p>
+
+    </form>
+
+
+{% endblock %}

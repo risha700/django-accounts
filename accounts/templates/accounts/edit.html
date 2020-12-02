@@ -1,0 +1,14 @@
+{% extends "accounts_base.html" %}
+
+{% block title %}Edit your account{% endblock %}
+
+{% block content %}
+    <h1 class="text-gray-900 font-bold text-2xl mb-4">Edit your account</h1>
+    <form action="." method="post" enctype="multipart/form-data">
+        {% include "includes/_form.html" with form=user_form %}
+        {% include "includes/_form.html" with form=profile_form %}
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-outline border-primary hover:bg-primary mt-10 block mr-auto ml-auto">Save Changes</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% autoescape off %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block subject %} {% endblock %}</title>
+    </head>
+    <body>
+       <div style="box-sizing: border-box;border-width: 0;border-style: solid;border-color: #e2e8f0;display: flex;flex-direction: column;flex-wrap: wrap;justify-content: center;align-content: center;margin-top: 5rem;">
+            <div style="display: flex;justify-content: center;align-content: center;">
+                <div style="box-sizing: border-box;border-width: 1px;border-style: solid;border-color: #e2e8f0;background-color: #fff;border-radius: .5rem;display: block;padding: 2.5rem;box-shadow: 0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);text-align: center;width: auto;">
+               {% block body %}
+
+                {% endblock %}
+                </div>
+            </div>
+       </div>
+    </body>
+    </html>
+{% endautoescape %}
+

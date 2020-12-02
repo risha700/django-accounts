@@ -1,0 +1,19 @@
+{% extends "accounts_base.html" %}
+
+{% block title %}Create an account{% endblock %}
+
+{% block content %}
+    <h1 class="text-gray-900 font-bold text-2xl leading-10">Create an account</h1>
+    <p class="font-semibold mb-4 italic text-gray-600">Please, complete the following form:</p>
+    <form action="." method="post" novalidate>
+        {% include "includes/_form.html" with form=user_form %}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline rounded-full mt-3 block mr-auto ml-auto">Create Account</button>
+    </form>
+    <i class="text-center block mt-3">
+    <small class="font-">Already have an account?
+    </small>
+    <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="{% url 'auth:login' %}">Login</a>
+    </i>
+
+{% endblock %}
